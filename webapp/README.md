@@ -21,7 +21,6 @@
 ![大屏端欢迎页](http://self-storage.b0.upaiyun.com/2017/10/22/150867322395988694.png)
 
 
-
 ## 安装
 
 下载本项目
@@ -43,6 +42,11 @@
 
 
 ## 配置
+
+**内网穿透**
+https://www.ngrok.cc/user.html
+
+
 
 **配置微信公众号**
 
@@ -216,4 +220,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
