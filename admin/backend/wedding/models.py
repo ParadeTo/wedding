@@ -7,6 +7,8 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
 
+import math
+import simplejson
 from django.db import models
 
 
@@ -54,8 +56,31 @@ class WxAccounts(models.Model):
     lastupdatetime = models.DateTimeField(db_column='lastUpdateTime')  # Field name made lowercase.
     lastcheckinstatus = models.CharField(db_column='lastCheckinStatus', max_length=7, blank=True, null=True)  # Field name made lowercase.
 
-    def __str__(self):
-        return self.nickname
+    # def __str__(self):
+    #     print(self.nickname)
+    #     return self.nickname
+
+    @staticmethod
+    def list(page, limit):
+        page = int(page)
+        limit = int(limit)
+        total_items = WxAccounts.objects.count()
+        total_page = math.ceil(total_items / limit)
+        list = []
+
+        if page <= total_page:
+            offset = (page - 1) * limit
+            query_set = WxAccounts.objects.all()[offset : offset + limit]
+            for item in query_set:
+                print(item)
+                d = {
+                    "nickname": item.nickname,
+                    "sex": item.sex,
+                    "province": item.province
+                }
+                list.append(d)
+        return list
+
 
     class Meta:
         # managed = False
